@@ -1,0 +1,15 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build & Deploy Mod",
+      "type": "shell",
+      "command": "dotnet build /p:Configuration=Debug && cp bin/Debug/net472/QuestingBeast.dll \"/home/admin/.local/share/Steam/steamapps/common/Tainted Grail FoA/BepInEx/plugins/\"",
+      "problemMatcher": "$msCompile",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}

@@ -1,3 +1,40 @@
 <Solution>
   <Project Path="QuestingBeast/QuestingBeast.csproj" Id="4689b404-be45-4244-82e8-75816de65f1c" />
 </Solution>
+
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <AssemblyName>QuestingBeast</AssemblyName>
+    <Description>Tainted Grail Fall of Avalon Mod</Description>
+    <Version>1.0.0</Version>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Core BepInEx & Harmony references on Bazzite -->
+    <Reference Include="BepInEx">
+      <HintPath>/home/admin/.local/share/Steam/steamapps/common/Tainted Grail FoA/BepInEx/core/BepInEx.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="0Harmony">
+      <HintPath>/home/admin/.local/share/Steam/steamapps/common/Tainted Grail FoA/BepInEx/core/0Harmony.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+
+    <!-- Essential Unity 6 Engine Assemblies -->
+    <Reference Include="Assembly-CSharp">
+      <HintPath>/home/admin/.local/share/Steam/steamapps/common/Tainted\ Grail\ FoA/Fall\ of\ Avalon_Data/Managed/Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>/home/admin/.local/share/Steam/steamapps/common/Tainted\ Grail\ FoA/Fall\ of\ Avalon_Data/Managed/UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>/home/admin/.local/share/Steam/steamapps/common/Tainted\ Grail\ FoA/Fall\ of\ Avalon_Data/Managed/UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+</Project>

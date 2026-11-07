@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project ToolsVersion="15.0" xmlns="http://microsoft.com">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(WORKSPACE_MSBUILD_PATH)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -12,12 +12,14 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+     <!-- explicitly silences the AMD64 vs MSIL architecture mismatch warning when building with dotnet v.10 -->
+    <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>E:\SteamLibrary\steamapps\common\Tainted Grail FoA\BepInEx\plugins\QuestingBeast\</OutputPath>
+    <OutputPath>/home/admin/.local/share/Steam/steamapps/common/Tainted Grail FoA/BepInEx/plugins/QuestingBeast/</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -32,22 +34,31 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <!-- Automatically supplies the legacy .NET 4.7.2 framework references to the .NET 10 compiler -->
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    
+    <!-- Core BepInEx Framework Paths -->
     <Reference Include="0Harmony">
-      <HintPath>E:\SteamLibrary\steamapps\common\Tainted Grail FoA\BepInEx\core\0Harmony.dll</HintPath>
+      <HintPath>/home/admin/.local/share/Steam/steamapps/common/Tainted Grail FoA/BepInEx/core/0Harmony.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="BepInEx">
-      <HintPath>E:\SteamLibrary\steamapps\common\Tainted Grail FoA\BepInEx\core\BepInEx.dll</HintPath>
+      <HintPath>/home/admin/.local/share/Steam/steamapps/common/Tainted Grail FoA/BepInEx/core/BepInEx.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="BepInEx.Harmony">
-      <HintPath>E:\SteamLibrary\steamapps\common\Tainted Grail FoA\BepInEx\core\BepInEx.Harmony.dll</HintPath>
+      <HintPath>/home/admin/.local/share/Steam/steamapps/common/Tainted Grail FoA/BepInEx/core/BepInEx.Harmony.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="MonoMod.Utils">
-      <HintPath>E:\SteamLibrary\steamapps\common\Tainted Grail FoA\BepInEx\core\MonoMod.Utils.dll</HintPath>
+      <HintPath>/home/admin/.local/share/Steam/steamapps/common/Tainted Grail FoA/BepInEx/core/MonoMod.Utils.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    
+    <!-- System Libraries -->
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -56,16 +67,18 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    
+    <!-- Unity 6 Core Engine Assemblies via Windows Native Structure -->
     <Reference Include="TG.Main">
-      <HintPath>E:\SteamLibrary\steamapps\common\Tainted Grail FoA\Fall of Avalon_Data\Managed\TG.Main.dll</HintPath>
+      <HintPath>/home/admin/.local/share/Steam/steamapps/common/Tainted Grail FoA/Fall of Avalon_Data/Managed/TG.Main.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>E:\SteamLibrary\steamapps\common\Tainted Grail FoA\Fall of Avalon_Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>/home/admin/.local/share/Steam/steamapps/common/Tainted Grail FoA/Fall of Avalon_Data/Managed/UnityEngine.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>E:\SteamLibrary\steamapps\common\Tainted Grail FoA\Fall of Avalon_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>/home/admin/.local/share/Steam/steamapps/common/Tainted Grail FoA/Fall of Avalon_Data/Managed/UnityEngine.CoreModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
